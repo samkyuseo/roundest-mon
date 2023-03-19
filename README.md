@@ -10,5 +10,7 @@ npm run dev
 
 # TODO
 
-- [ ] Persist data fetched from pokemon API
-- [ ] Persist
+- [ ] Use next/ image to handle image caching and better rendering
+  - [ ] Maybe move images to bulbapedia
+- [ ] Persist data fetched from Pokemon API
+- [ ] Create results pge with counting/sorting
