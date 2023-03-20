@@ -71,7 +71,7 @@ const PokemonListing: React.FC<{
         height={"200"}
         width={"200"}
         alt=""
-        src={props.pokemon.sprites.front_default as string}
+        src={props.pokemon.spriteUrl as string}
       />
       <div className="p-3" />
       <div className="text-xl text-center capitalize mt-[-2rem]">
