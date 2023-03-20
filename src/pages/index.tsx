@@ -15,9 +15,13 @@ export default function Home() {
 
   const voteMutation = trpc["cast-vote"].useMutation();
 
-  if (firstPokemon.isLoading || secondPokemon.isLoading) {
-    return <div>Loading...</div>;
-  }
+  const dataLoaded =
+    !firstPokemon.isLoading &&
+    firstPokemon.data &&
+    !secondPokemon.isLoading &&
+    secondPokemon.data;
+
+  // const dataLoaded = false;
 
   const voteForRoundest = (selected: number) => {
     // fire mutation to persist changes
@@ -30,26 +34,24 @@ export default function Home() {
   };
   return (
     <div className="h-screen w-screen flex flex-col justify-center align-middle items-center">
-      <div className="text-2xl text-center">Which Pokemon is Rounder?</div>
-      <div className="p-2" />
-      <div className="border rounded p-8 flex justify-between max-w-2xl items-center">
-        {!firstPokemon.isLoading &&
-          firstPokemon.data &&
-          !secondPokemon.isLoading &&
-          secondPokemon.data && (
-            <>
-              <PokemonListing
-                pokemon={firstPokemon.data}
-                vote={() => voteForRoundest(first)}
-              />
-              <div className="p-8">Vs</div>
-              <PokemonListing
-                pokemon={secondPokemon.data}
-                vote={() => voteForRoundest(second)}
-              />
-            </>
-          )}
+      <div className="fixed top-0 left-0 text-2xl w-screen text-center pt-4">
+        Which Pokemon is Rounder?
       </div>
+      <div className="p-2" />
+      {dataLoaded && (
+        <div className="border rounded p-8 flex justify-between max-w-2xl items-center">
+          <PokemonListing
+            pokemon={firstPokemon.data}
+            vote={() => voteForRoundest(first)}
+          />
+          <div className="p-8">Vs</div>
+          <PokemonListing
+            pokemon={secondPokemon.data}
+            vote={() => voteForRoundest(second)}
+          />
+        </div>
+      )}
+      {!dataLoaded && <img className="w-45" src="/rings.svg" />}
       <div className="fixed left-0 bottom-0 w-screen p-3 text-xl text-center">
         <a href="https://github.com/samkyuseo/roundest-mon">Github</a>
         {" | "}
