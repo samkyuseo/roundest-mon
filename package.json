@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\""
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -35,6 +36,7 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "prisma": "^4.10.1",
-    "tailwindcss": "^3.2.6"
+    "tailwindcss": "^3.2.6",
+    "ts-node": "^10.9.1"
   }
 }
