@@ -11,7 +11,10 @@ const ResultsPage: React.FC<{
       <h2 className="text-2xl p-4">Results</h2>
       <div className="flex flex-col w-full max-w-2xl border">
         {props.pokemon
-          .sort((a, b) => generateCountPercent(b) - generateCountPercent(a))
+          .sort(
+            (a, b) =>
+              Number(generateCountPercent(b)) - Number(generateCountPercent(a))
+          )
           .map((currentPokemon, index) => {
             return <PokemonListing pokemon={currentPokemon} key={index} />;
           })}
@@ -24,7 +27,7 @@ type PokemonQueryResult = AsyncReturnType<typeof getPokemonInOrder>;
 const generateCountPercent = (pokemon: PokemonQueryResult[number]) => {
   const { VoteFor, VoteAgainst } = pokemon._count;
   if (VoteFor + VoteAgainst === 0) return 0;
-  return (VoteFor / (VoteFor + VoteAgainst)) * 100;
+  return ((VoteFor / (VoteFor + VoteAgainst)) * 100).toFixed(2);
 };
 const PokemonListing: React.FC<{ pokemon: PokemonQueryResult[number] }> = ({
   pokemon,
