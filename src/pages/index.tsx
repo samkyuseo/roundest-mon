@@ -3,6 +3,7 @@ import { trpc } from "@/utils/trpc";
 import { useState } from "react";
 import { inferQueryResponse } from "./api/trpc/[trpc]";
 import Image from "next/image";
+import Link from "next/link";
 const btn =
   "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow";
 
@@ -49,8 +50,10 @@ export default function Home() {
             </>
           )}
       </div>
-      <div className="fixed left-0 bottom-0 w-screen p-3">
+      <div className="fixed left-0 bottom-0 w-screen p-3 text-xl text-center">
         <a href="https://github.com/samkyuseo/roundest-mon">Github</a>
+        {" | "}
+        <Link href="/results">Results</Link>
       </div>
     </div>
   );
