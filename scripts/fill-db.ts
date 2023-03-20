@@ -16,7 +16,6 @@ const dbBackFill = async () => {
   }));
 
   console.log("pokemon?", allPokemon);
-
   const creation = await prisma.pokemon.createMany({
     data: formattedPokemon,
   });
