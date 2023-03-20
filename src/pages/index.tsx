@@ -49,6 +49,11 @@ export default function Home() {
             </>
           )}
       </div>
+      <div className="fixed left-0 bottom-0 w-screen p-3">
+        <a href="https://github.com/samkyuseo/roundest-mon" target="_blank">
+          Github
+        </a>
+      </div>
     </div>
   );
 }
