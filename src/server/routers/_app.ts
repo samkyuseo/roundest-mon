@@ -18,8 +18,8 @@ export const appRouter = router({
   "get-pokemon-by-id": procedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
-      const api = new PokemonClient();
-      const pokemon = await api.getPokemonById(input.id);
+      const pokeApiConnection = new PokemonClient();
+      const pokemon = await pokeApiConnection.getPokemonById(input.id);
       return { name: pokemon.name, sprites: pokemon.sprites };
     }),
   "cast-vote": procedure

@@ -66,12 +66,14 @@ const PokemonListing: React.FC<{
 }> = (props) => {
   return (
     <div className="w-64 h-64 flex flex-col items-center">
+      {/* Add image caching on the server */}
       <Image
         height={"200"}
         width={"200"}
         alt=""
         src={props.pokemon.sprites.front_default as string}
       />
+      <div className="p-3" />
       <div className="text-xl text-center capitalize mt-[-2rem]">
         {props.pokemon.name}
       </div>
